@@ -156,8 +156,35 @@ time | 字符串（时间格式）| 必需 | 对应数据上传数据包中的ti
 特点：包含有gid,result,sid属性
 应答：无，中心不向网关返回应答，而是根据sid将此数据包转发到相应的网络连接
 只有当网关收到的命令包的cmd中包含get属性时，上面的返回包中才会包含info属性
-### 报文字段说明
 ```
+#### 报文字段说明
+字段 | 类型 | 必要性 | 说明
+--- | --- | --- | ---
+status	| 数值   | 必需 | 表示命令的处理状态，0表示没有错误
+gid     | 字符串 | 必需 | 网关的唯一标识码
+sid     | 字符串 | 必需 | 网关与中心建立的连接socket identity
+result  | 字符串 | 必需 | 命令执行有错误时的附加错误信息
+info    | 实体   | 非必需 | 当中心向网关下发的命令2字段中含有get字段时，回复信息字段中才有info字段
+info/name | 字符串 | 必需 | 网关名称
+info/address | 字符串 | 必需 | 网关的地理位置信息
+info/hardver | 字符串 | 必需 | 网关的硬件版本编号
+info/softver | 字符串 | 必需 | 网关的软件版本编号
+info/eth0/address | 字符串 | 必需 | 网关有线网络的IP地址
+info/eth0/netmask | 字符串 | 必需 | 网关有线网络的子网掩码
+info/eth0/gateway | 字符串 | 必需 | 网关有线网络的局域网网关地址
+info/eth0/mac     | 字符串 | 必需 | 网关有线网卡的MAC地址
+info/wlan0/address | 字符串 | 必需 | 网关无线网络的IP地址
+info/wlan0/netmask | 字符串 | 必需 | 网关无线网络的子网掩码
+info/wlan0/gateway | 字符串 | 必需 | 网关无线网络的局域网网关地址
+info/wlan0/mac     | 字符串 | 必需 | 网关无线网卡的MAC地址
+info/dns | 数组 | 必需 | dns服务器地址
+info/ntp | 字符串 | 必需 | ntp服务器地址
+info/server | 数组 | 必需 | 中心的网络地址
+info/username | 字符串 | 必需 | 网关登录中心的用户名
+info/password | 字符串 | 必需 | 网关登录中心的密码
+
+
+
 ### 4. 来自于网关的心跳包
 ```JSON
 {
