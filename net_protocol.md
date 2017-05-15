@@ -143,13 +143,9 @@ time | 字符串（时间格式）| 必需 | 对应数据上传数据包中的ti
         "server":["tcp://usa88.net:20000", "tcp://usa88.net:20002"],
         "username":"",
         "password":"",
-        "device":[
-            {"uid":"temphumi.1","period":30},
-            {"uid":"temphumi.2","period":60}
-        ],
         "bluetooth":[
-            {"mac":"mac1", "uid":"uid1", "name":"name1"},
-            {"mac":"mac2", "uid":"uid2", "name":"name2"},
+            {"mac":"mac1", "uid":"uid1", "name":"name1", "status": 0},
+            {"mac":"mac2", "uid":"uid2", "name":"name2", "status": 0},
         ]
     }
 }
@@ -182,6 +178,11 @@ info/ntp | 字符串 | 必需 | ntp服务器地址
 info/server | 数组 | 必需 | 中心的网络地址
 info/username | 字符串 | 必需 | 网关登录中心的用户名
 info/password | 字符串 | 必需 | 网关登录中心的密码
+info/bluetooth| 实体 | 非必需 | 中心下发的命令2中含有device字段时才有该字段
+info/bluetooth/mac| 字符串 | 必需 | 蓝牙设备的MAC地址
+info/bluetooth/uid| 字符串 | 非必需 | 未知蓝牙设备无uid
+info/bluetooth/name| 字符串 | 必需 | 蓝牙设备的名称
+info/bluetooth/status| 数值 | 非必需 | 当命令2中的optype为3,4,5时相应蓝牙设备的执行结果
 
 
 
