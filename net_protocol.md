@@ -220,10 +220,7 @@ info/bluetooth/status| 数值 | 非必需 | 当命令2中的optype为3,4,5时相
 }
 其中：
   status表示命令处理状态，0表示没有错误
-  machines为记录的所有成功连接的网关
-    datas为从该网关上传的数据，每个uid只记录了最新的一条数据，可根据需要自行设计
-    heartbeat为该网关最新发送数据包的时间，用于超时判断
-    sid为该网关与中心建立的连接socket identity
+  gateways为记录的所有成功连接的网关
 ```
 #### 报文字段说明
 字段 | 类型 | 必要性 | 说明
