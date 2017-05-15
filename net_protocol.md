@@ -207,8 +207,11 @@ info/bluetooth/status| 数值 | 非必需 | 当命令2中的optype为3,4,5时相
     "gateways":{
         "45007720000801":{
             "datas":{
-                "bloodpressure.1":{"beatrate":68,"pressure":"110/75","time":"2016-05-08 23:58:09"},
-                "temphumi.1":{"humidity":52.5,"temperature":26.9,"time":"2016-05-08 23:58:09"}
+                "bluetooth":[
+                    {"mac":"mac1", "uid":"uid1", "name":"name1", "time":"2016-05-08 23:58:09"},
+                    {"mac":"mac2", "uid":"uid2", "name":"name2", "time":"2016-05-08 23:58:09"},
+                ],
+                "self":{"humidity":52.5,"temperature":26.9, "air":75, "time":"2016-05-08 23:58:09"}
             },
             "heartbeat":1462265811.1678,
             "sid":"sock01"
@@ -222,3 +225,15 @@ info/bluetooth/status| 数值 | 非必需 | 当命令2中的optype为3,4,5时相
     heartbeat为该网关最新发送数据包的时间，用于超时判断
     sid为该网关与中心建立的连接socket identity
 ```
+#### 报文字段说明
+字段 | 类型 | 必要性 | 说明
+--- | --- | --- | ---
+status	| 数值 | 必需 | 表示命令的处理状态，0表示没有错误
+gateways| 实体 | 必需 |
+bluetooth| 数组 | 非必需 | 已连接蓝牙设备列表
+self | 实体 | 必需 | 网关自带传感器数据
+self/humidity | 必需 | 数值 | 空气湿度
+self/temperature | 必需 | 数值 | 温度
+self/air | 数值 | 必需 | 空气质量
+heartbeat | 数值 | 必需 | 该网关最新发送数据包的时间，用于超时判断
+sid | 字符串 | 必需 | 该网关与中心建立的连接socket identity
